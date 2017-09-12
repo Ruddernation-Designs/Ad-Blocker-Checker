@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ad Blocker Checker</title>
+<style>
+    .notblocked {
+      display: block;
+		color:#fff;
+    }
+    .blocked {
+      display: none;
+		color:#fff;
+    }
+    .adblock .notblocked {
+      display: none;
+		color:#fff;
+    }
+    .adblock .blocked {
+      display: block;
+		color:#fff;
+    }
+		.blink_me {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+  70% { opacity: 0; }
+}
+  </style>
+</head>
+
+<body>
+<div class="blink_me blocked">Please disable your ad blocker.</br>
+<div class="blink_me notblocked">Thank you for not using an ad blocker</br>
+<script>
+(function(){
+  var test = document.createElement('div');
+  test.innerHTML = '&nbsp;';
+  test.className = 'adsbox';
+  document.body.appendChild(test);
+  window.setTimeout(function() {
+    if (test.offsetHeight === 0) {
+      document.body.classList.add('adblock');
+    }
+    test.remove();
+  }, 100);
+})();
+</script>
+</body>
+</html>
